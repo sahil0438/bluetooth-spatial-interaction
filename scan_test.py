@@ -1,3 +1,4 @@
+"""Development utility — not part of main pipeline"""
 """Quick BLE scan to list all named devices nearby."""
 import asyncio
 import sys
