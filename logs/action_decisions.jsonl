@@ -1,0 +1,79 @@
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-16T12:09:05.073540", "confidence": 94.3}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-16T12:09:05.073540", "confidence": 91.2}
+{"action": "NEXT_SLIDE", "context": "PRESENTATION_MODE", "gesture": "ROTATION", "params": {}, "timestamp": "2026-06-16T12:09:05.073540", "confidence": 88.5}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-16T12:09:05.073540", "confidence": 87.5}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-16T12:09:42.728429", "confidence": 94.3}
+{"action": "WAKE_SCREEN", "context": "AWAY_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": false}, "timestamp": "2026-06-16T12:09:42.728429", "confidence": 91.2}
+{"action": "NEXT_SLIDE", "context": "PRESENTATION_MODE", "gesture": "ROTATION", "params": {}, "timestamp": "2026-06-16T12:09:42.735600", "confidence": 88.5}
+{"action": "LOCK_SCREEN", "context": "FOCUS_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 0}, "timestamp": "2026-06-16T12:09:42.736109", "confidence": 87.5}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-16T12:13:41.448523", "confidence": 94.3}
+{"action": "WAKE_SCREEN", "context": "AWAY_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": false}, "timestamp": "2026-06-16T12:13:41.448523", "confidence": 91.2}
+{"action": "NEXT_SLIDE", "context": "PRESENTATION_MODE", "gesture": "ROTATION", "params": {}, "timestamp": "2026-06-16T12:13:41.451513", "confidence": 88.5}
+{"action": "LOCK_SCREEN", "context": "FOCUS_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 0}, "timestamp": "2026-06-16T12:13:41.452831", "confidence": 87.5}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:55:02.065775", "confidence": 83.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:55:06.871322", "confidence": 83.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:55:31.215989", "confidence": 85.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:57:03.553870", "confidence": 71.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:57:21.974647", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T11:57:26.180233", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:00:31.205291", "confidence": 71.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:00:35.503029", "confidence": 86.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:03:50.030008", "confidence": 75.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:05:48.192851", "confidence": 95.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:11:24.181773", "confidence": 73.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:12:17.288845", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:12:21.475750", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:13:10.557700", "confidence": 78.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:13:14.700133", "confidence": 78.0}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-19T12:14:21.813106", "confidence": 86.0}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-19T12:14:23.946126", "confidence": 86.0}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-19T12:14:26.575681", "confidence": 77.0}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-19T12:14:28.650200", "confidence": 77.0}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-19T12:14:31.027994", "confidence": 77.0}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-19T12:14:33.392653", "confidence": 77.0}
+{"action": "WAKE_SCREEN", "context": "WORK_MODE", "gesture": "DOUBLE_APPROACH", "params": {"show_summary": true}, "timestamp": "2026-06-19T12:14:35.796116", "confidence": 77.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:16:46.080930", "confidence": 78.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:16:51.098651", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:16:55.243835", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:19:27.885919", "confidence": 80.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:19:32.215150", "confidence": 80.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:19:36.328365", "confidence": 82.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:19:40.381663", "confidence": 82.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:23:14.094307", "confidence": 77.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:24:22.710646", "confidence": 87.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:24:26.812316", "confidence": 87.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:24:30.990735", "confidence": 84.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:24:35.115385", "confidence": 83.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:24:39.257892", "confidence": 83.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:25:00.961457", "confidence": 75.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:25:05.118158", "confidence": 75.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:26:47.827282", "confidence": 79.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-19T12:26:52.147158", "confidence": 79.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:26.841838", "confidence": 98.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:32.857289", "confidence": 98.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:37.180854", "confidence": 98.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:41.480343", "confidence": 98.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:45.676627", "confidence": 75.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-22T12:31:49.997615", "confidence": 79.0}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-22T12:31:55.308788", "confidence": 99.0}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-22T12:31:57.699772", "confidence": 99.0}
+{"action": "VOLUME_ADJUST", "context": "WORK_MODE", "gesture": "ROTATION", "params": {"direction": "up", "steps": 2}, "timestamp": "2026-06-22T12:31:59.788307", "confidence": 99.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:24:35.697671", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:26:16.990788", "confidence": 86.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:27:38.819442", "confidence": 78.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:27:43.192109", "confidence": 78.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:29:00.650170", "confidence": 86.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:29:44.041781", "confidence": 82.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:29:48.287295", "confidence": 82.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:30:50.473872", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:30:54.723289", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:47:14.360655", "confidence": 84.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:47:18.920869", "confidence": 84.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:47:23.162976", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-06-29T12:47:27.329165", "confidence": 72.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-06T12:46:43.957903", "confidence": 81.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-13T11:22:49.467986", "confidence": 82.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-13T12:11:30.088753", "confidence": 75.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-13T12:11:35.348829", "confidence": 87.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-13T12:12:10.090495", "confidence": 80.0}
+{"action": "LOCK_SCREEN", "context": "WORK_MODE", "gesture": "SLOW_DEPARTURE", "params": {"delay_seconds": 3}, "timestamp": "2026-07-13T12:13:15.668713", "confidence": 82.0}
