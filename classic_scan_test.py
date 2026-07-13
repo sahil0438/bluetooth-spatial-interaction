@@ -1,3 +1,4 @@
+"""Development utility — not part of main pipeline"""
 """Classic Bluetooth scan to discover devices by name."""
 import sys
 
