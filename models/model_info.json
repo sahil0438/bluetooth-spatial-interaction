@@ -1,0 +1,29 @@
+{
+    "model_type": "RandomForest",
+    "test_accuracy": 0.9917,
+    "trained_on": "2026-06-16T11:47:16.435576",
+    "samples_per_class": {
+        "ROTATION": 150,
+        "IDLE": 150,
+        "SLOW_DEPARTURE": 150,
+        "DOUBLE_APPROACH": 150
+    },
+    "feature_names": [
+        "mean_rssi",
+        "std_rssi",
+        "slope",
+        "min_rssi",
+        "max_rssi",
+        "rssi_range",
+        "dip_count",
+        "dip_depth",
+        "recovery_strength",
+        "crossing_rate",
+        "first_half_mean",
+        "second_half_mean",
+        "momentum"
+    ],
+    "total_samples": 600,
+    "train_size": 480,
+    "test_size": 120
+}

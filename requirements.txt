@@ -1,0 +1,11 @@
+bleak>=3.0.1
+numpy>=1.24.0
+scipy
+scikit-learn>=1.3.0
+joblib>=1.3.0
+pyautogui
+pycaw
+comtypes
+pyqt6
+pyqt6-qt6
+pathlib

@@ -1,0 +1,237 @@
+======================================================================
+               BLUETOOTH SPATIAL INTERACTION SYSTEM
+                   PROJECT MEMORY & SUMMARY GUIDE
+======================================================================
+
+This file maintains a regular update of the core implementation details,
+parameters, and commands to remember at the end of the project completion.
+
+----------------------------------------------------------------------
+PROJECT OBJECTIVE
+----------------------------------------------------------------------
+To detect a user's location and movements relative to a laptop using 
+filtered Bluetooth Low Energy (BLE) RSSI signal streams from a target 
+device without relying on GPS, cameras, or external hardware sensors.
+
+TARGET DEVICE: Nothing Phone (2a)
+OUT OF RANGE THRESHOLD: -127 dBm (device offline/absent)
+
+----------------------------------------------------------------------
+PHASE 1: SCANNER MODULE
+----------------------------------------------------------------------
+* Main script: scanner/ble_scanner.py
+* Log output: logs/raw_scan.jsonl
+* Details: 
+  - Real-time BLE advertisement scanning using bleak.
+  - Screen-clearing device table rendering (refreshes every 1.0s).
+  - Prunes inactive devices after 30 seconds of silence.
+  - Tracks specific target by name (case-sensitive) or MAC address.
+
+----------------------------------------------------------------------
+PHASE 2: SIGNAL PROCESSING PIPELINE
+----------------------------------------------------------------------
+* Main script: signal_processing/signal_pipeline.py
+* Log output: logs/filtered_scan.jsonl
+* Components:
+  - device_filter.py: Filters raw log entries; raises "device_lost" if 
+    inactive for > 5 seconds.
+  - moving_average.py: Smooths high-frequency noise using a window size of 5.
+  - kalman_filter.py: Processes moving average outputs using a 1D Kalman 
+    Filter (Parameters: Process Noise Q = 0.008, Measurement Noise R = 2.0).
+
+----------------------------------------------------------------------
+PHASE 3: SPATIAL INTERPRETATION LAYER
+----------------------------------------------------------------------
+* Modules: gesture_engine/calibrator.py, spatial_detector.py, state_machine.py
+* Log output: logs/spatial_events.jsonl
+* Components & Settings:
+  1. Calibration Module:
+     - Runs once at startup for 10 seconds if logs/calibration.json is missing.
+     - Saves calculated baseline RSSI (mean) & noise floor (std dev).
+     - Loads stored calibration.json automatically on subsequent startups.
+  2. Trend Calculation:
+     - Keeps a sliding window of the last 10 filtered readings.
+     - Fits a 1D linear regression (numpy.polyfit) to estimate slope (dBm/s) 
+       and trend strength (R-squared).
+     - Thresholds: slope > +1.5 = APPROACHING | slope < -1.5 = DEPARTING.
+  3. State Transitions & Anti-flicker:
+     - Enforces state graph transitions:
+       ABSENT -> APPROACHING -> PRESENT_STABLE -> DEPARTING -> ABSENT.
+     - Anti-Flicker: Enforces a minimum 2-second hold time on state changes.
+     - Rapid Approach Spikes: Transitions to RAPID_APPROACH if RSSI increases 
+       by > 20 dBm within 2 seconds. Automatically transitions back to 
+       PRESENT_STABLE after 2 seconds.
+     - Absent Threshold: Triggers ABSENT if RSSI falls below -100 dBm, 
+       device is lost, or >10s elapse.
+     - Recovery rule: If state is ABSENT and a packet is detected (> -100 dBm), 
+       proposes APPROACHING to allow smooth transition out of ABSENT.
+
+----------------------------------------------------------------------
+PHASE 4: GESTURE RECOGNITION ENGINE (ML)
+----------------------------------------------------------------------
+* Modules: gesture_engine/feature_extractor.py, train_model.py,
+           gesture_recogniser.py, evaluate_model.py
+* Data:    data_collection/gesture_data.csv
+* Model:   models/gesture_model.pkl, models/scaler.pkl, models/model_info.json
+* Log:     logs/gesture_events.jsonl
+* Gestures recognised:
+  1. ROTATION        — dip-recover wave x2 in 4s → Volume control
+  2. SLOW_DEPARTURE  — gradual RSSI decline over 5s → Lock screen
+  3. DOUBLE_APPROACH — approach, pause, approach again → Wake/confirm
+  4. IDLE            — no gesture (background state, never fires an event)
+* Feature Engineering (13 features per 8-reading window):
+  mean_rssi, std_rssi, slope, min_rssi, max_rssi, rssi_range,
+  dip_count, dip_depth, recovery_strength, crossing_rate,
+  first_half_mean, second_half_mean, momentum
+* ML Models compared: RandomForest(100 trees) vs SVM(RBF, C=1.0)
+  - Better model saved automatically.
+* Real-Time Recognition Parameters:
+  - Window: 8 filtered RSSI readings (4 seconds at 0.5s intervals)
+  - Confidence threshold: >= 70%
+  - Triple confirmation: 3 consecutive matching predictions (1.5s)
+  - Cooldown: 2 seconds between gesture firings
+  - IDLE never fires as a gesture event
+* Data Collection (v2 — Timestamp-Aware + Interpolation):
+  - Run main.py in Terminal 1, collect_gestures.py in Terminal 2
+  - BLE ads arrive at irregular intervals (3-10+s), NOT every 0.5s.
+  - Old method polled last value every 0.5s → stale duplicate readings.
+  - New method tails filtered log for REAL new entries during 4s window,
+    records each with its actual timestamp offset, then linearly
+    interpolates to 8 evenly-spaced values using numpy.interp().
+  - Shows data quality rating per sample (EXCELLENT/GOOD/FAIR/POOR)
+    based on how many real BLE readings were captured.
+  - Minimum 50 samples per gesture before training allowed
+  - CSV format: label, r0, r1, r2, r3, r4, r5, r6, r7
+
+----------------------------------------------------------------------
+USEFUL COMMANDS TO REMEMBER
+----------------------------------------------------------------------
+1. Find MAC address / identify target:
+   python identify_phone.py
+   
+2. Run standard Bluetooth Classic scan:
+   python classic_scan_test.py
+   
+3. Run Phase 3 standalone unit tests:
+   python -m gesture_engine.test_spatial
+
+4. Start full live tracking system:
+   python main.py --target-name "Nothing Phone (2a)"
+
+5. Collect gesture training data (run while main.py is active):
+   python -m data_collection.collect_gestures
+
+6. Test feature extraction on sample sequences:
+   python -m gesture_engine.feature_extractor
+
+7. Train the gesture recognition model:
+   python -m gesture_engine.train_model
+
+8. Evaluate model in detail:
+   python -m gesture_engine.evaluate_model
+
+----------------------------------------------------------------------
+PHASE 5: CONTEXT AWARENESS ENGINE
+----------------------------------------------------------------------
+* Modules: context_engine/contexts.py, context_detector.py,
+           action_resolver.py, session_tracker.py, context_pipeline.py
+* Logs:    logs/context_events.jsonl, logs/action_decisions.jsonl,
+           logs/session_summary.json
+* Purpose: Rule-based context engine that determines WHAT to do based
+           on WHO is present, WHEN it is, and WHAT gestures occurred.
+* NO ML — pure rule-based logic.
+
+CONTEXT DEFINITIONS (priority order):
+  Priority 1: AWAY_MODE
+    Trigger: ABSENT >30s OR RSSI < -100 for >20s
+    Gestures: DOUBLE_APPROACH -> WAKE_SCREEN | others ignored
+  Priority 2: PRESENTATION_MODE
+    Trigger: DOUBLE_APPROACH x2 within 10s (manual activation)
+    Gestures: ROTATION -> NEXT_SLIDE | SLOW_DEPARTURE -> PREV_SLIDE
+              DOUBLE_APPROACH -> EXIT_PRESENTATION
+  Priority 3: FOCUS_MODE
+    Trigger: PRESENT_STABLE >10min + no gestures >5min
+    Gestures: ROTATION -> TOGGLE_DND | SLOW_DEPARTURE -> LOCK_SCREEN (0s)
+              DOUBLE_APPROACH -> EXIT_FOCUS
+  Priority 4: WORK_MODE (default)
+    Trigger: User present during 08:00-22:00
+    Gestures: ROTATION -> VOLUME_ADJUST | SLOW_DEPARTURE -> LOCK_SCREEN (3s)
+              DOUBLE_APPROACH -> WAKE_SCREEN
+
+CONTEXT PIPELINE:
+  - Tails gesture_events.jsonl in real time
+  - Evaluates context every 2 seconds (also on each gesture)
+  - Resolves gesture -> action via 12-entry lookup table
+  - Passes action dict to Phase 6 executor (stub)
+  - Tracks session statistics (auto-saves every 5 minutes)
+
+TERMINAL DISPLAY:
+  Context info box added below spatial state showing:
+    CONTEXT, Active duration, Last gesture -> action, Last action age
+
+----------------------------------------------------------------------
+PHASE 6: ACTION EXECUTION LAYER
+----------------------------------------------------------------------
+* Modules: automation/action_executor.py, safety_guard.py, volume_executor.py,
+           lock_executor.py, wake_executor.py, slide_executor.py, dnd_executor.py
+* Logs:    logs/action_log.jsonl, logs/safety_blocks.jsonl
+* Purpose: Translates context decisions into physical Windows OS actions.
+
+COMPONENTS:
+  1. Safety Guard: Pre-execution checks. Blocks if confidence < 70%, 
+     cooldown < 1.5s, or invalid action. Warns/delays LOCK_SCREEN if RSSI >= -60.
+  2. Volume Executor: Controls master volume via `pycaw`.
+  3. Lock Executor: Uses `ctypes.windll.user32.LockWorkStation()` with delay.
+  4. Wake Executor: Moves mouse 1px via `ctypes` + presses shift via `pyautogui`.
+  5. Slide Executor: Presses arrow keys via `pyautogui` with 0.3s cooldown.
+  6. DND Executor: Toggles Focus Assist via Windows registry (fallback to Settings).
+
+PHASE 7: PYQT6 REAL-TIME LIVE DASHBOARD
+----------------------------------------------------------------------
+* Modules: ui/dashboard.py, ui/log_reader.py, ui/demo_mode.py,
+           ui/widgets/rssi_graph.py, status_panel.py, session_stats.py
+* Purpose: Polished PyQt6 UI to display system status, live RSSI graph, contexts, 
+           and actions.
+* Modes:
+    1. Demo Mode: Simulates 90-second workflow. Writes fake events to logs.
+    2. Live Mode: Runs PyQt6 on the main thread and backend BLE loop in background.
+
+----------------------------------------------------------------------
+USEFUL COMMANDS TO REMEMBER (updated)
+----------------------------------------------------------------------
+1. Find MAC address / identify target:
+   python identify_phone.py
+   
+2. Run standard Bluetooth Classic scan:
+   python classic_scan_test.py
+   
+3. Run Phase 3 standalone unit tests:
+   python -m gesture_engine.test_spatial
+
+4. Run Phase 7 PyQt6 test:
+   python ui/test_pyqt6.py
+
+5. Run full live tracking system with Live Dashboard (Phases 1-7):
+   python main.py --target-name "Nothing Phone (2a)"
+
+6. Run simulation mode (Phases 7 Dashboard + Simulation):
+   python main.py --demo
+
+7. Collect gesture training data (run while main.py is active):
+   python -m data_collection.collect_gestures
+
+8. Generate synthetic training data:
+   python -m data_collection.generate_synthetic_data
+
+9. Train the gesture recognition model:
+   python -m gesture_engine.train_model
+
+10. Run Phase 5 context engine tests:
+    python -m context_engine.test_context
+
+11. Run Phase 6 automation tests:
+    python -m automation.test_automation --skip-lock
+
+======================================================================
+Last Updated: 2026-06-16
+======================================================================
